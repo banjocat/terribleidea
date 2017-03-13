@@ -1,0 +1,14 @@
+version: '2'
+services:
+    kafka:
+        image: banjocat/kafka
+        build: ./kafka/.
+    kafka-manager:
+        image: sheepkiller/kafka-manager
+        environment:
+            ZK_HOSTS: kafka:2181
+        ports:
+            - "9000:9000"
+    feeder:
+        image: banjocat/feeder
+        build: ./feeder/.
